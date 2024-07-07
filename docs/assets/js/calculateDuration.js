@@ -4,8 +4,23 @@ window.onload = function() {
     console.log(calExactTimeDiff(s, e));
     let duration = calExactTimeDiff(s, e);
     document.getElementById('duration').innerHTML = duration.yrs + '+ Years ';
+    showHidePreview();
 };
 
+function showHidePreview() {
+    const preview = document.getElementById('preview-pdf');
+    const previewBtn = document.getElementById('previewBtn');
+    const resumeHtml = document.getElementById('resume-html');
+    if (preview.style.display === 'none') {
+        preview.style.display = 'block';
+        previewBtn.innerHTML = 'Hide Preview';
+        resumeHtml.style.display = 'none';
+    } else {
+        preview.style.display = 'none';
+        previewBtn.innerHTML = 'Show Preview';
+        resumeHtml.style.display = 'flex';
+    }
+}
 // time difference in Days
 function getDaysDiff(startDate = new Date(), endDate = new Date()) {
     if (startDate > endDate) [startDate, endDate] = [endDate, startDate];
